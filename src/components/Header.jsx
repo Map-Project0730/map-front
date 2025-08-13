@@ -1,49 +1,25 @@
 import { useState } from "react";
 import HeaderButton from "./HeaderButton";
+import {useNavigate} from "react-router-dom";
 
 function Header() {
 
     const [minHeaderHeight, setMinHeaderHeight] = useState("60px");
 
-    const headerStyle = {
-        position: "fixed",
-        top: 0,
-        left: 0,
-        display: "flex",
-        width: "100%",
-        height: minHeaderHeight,
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "10px 20px",
-        backgroundColor: "#404AA6",
-        color: "#fff",
-        zIndex: 1000,
-        minWidth: "30%",
-    };
-
-    const flexboxStyle = {
-        display: "flex",
-        alignItems: "center",
-        gap: "10px",
-    };
-
-    const mapFontStyle = {
-        fontFamily: "'Bauhaus 93', sans-serif",
-        fontSize: "40px",
-        color: "white"
-    };
+    const navigate = useNavigate();
 
     return (
         <>
             <div style={{ height: minHeaderHeight }}></div>
-            <div style={headerStyle}>
-                <span style={mapFontStyle}>MAP</span>
-                <div style={flexboxStyle}>
-                    <HeaderButton text="홈" onClick={() => window.location.href = "/"} />
-                    <HeaderButton text="공지" onClick={() => window.location.href = "/announcements"} />
-                    <HeaderButton text="게시판" onClick={() => window.location.href = "/board"} />
-                    <HeaderButton text="글 작성" onClick={() => window.location.href = "/write"} />
-                    <HeaderButton text="캘린더" onClick={() => window.location.href = "/calendar"} />
+            <div className="fixed top-0 left-0 flex w-full justify-between items-center
+             py-[10px] px-[20px] text-white z-[1000] min-w-[30%]" style={{ height: minHeaderHeight, backgroundColor: "#404AA6" }}>
+                <span className="text-[40px] text-white font-['Bauhaus_93',sans-serif]">MAP</span>
+                <div className="flex items-center gap-[10px]">
+                    <HeaderButton text="홈" onClick={() => navigate("/")} />
+                    <HeaderButton text="공지" onClick={() => navigate("/announcements")} />
+                    <HeaderButton text="게시판" onClick={() => navigate("/board")} />
+                    <HeaderButton text="글 작성" onClick={() => navigate("/write")} />
+                    <HeaderButton text="캘린더" onClick={() => navigate("/calendar")} />
                 </div>
                 <div>
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
